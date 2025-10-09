@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Connect - Uniting for a Cleaner Future</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.9), rgba(76, 175, 80, 0.8)), 
+                        url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2070') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInLeft 1.2s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            animation: slideInRight 1.2s ease-out;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { width: 10px; height: 10px; top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 15px; height: 15px; top: 60%; left: 80%; animation-delay: 2s; }
+        .particle:nth-child(3) { width: 8px; height: 8px; top: 40%; left: 70%; animation-delay: 4s; }
+
+        /* Problem Section */
+        .problem-section {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: #4CAF50;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .problem-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover .problem-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .problem-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #4CAF50;
+        }
+
+        .problem-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Purpose Section */
+        .purpose-section {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .purpose-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .purpose-title {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .purpose-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+        .what-we-do-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1rem 0;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.2);
+            border-color: #4CAF50;
+        }
+
+        .activity-icon {
+            font-size: 3rem;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .activity-card:hover .activity-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .activity-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2E7D32;
+            font-weight: 600;
+        }
+
+        .activity-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .team-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.3);
+            border-color: #4CAF50;
+        }
+
+        .team-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+
+        .team-card-content {
+            padding: 1.5rem;
+        }
+
+        .team-card-content h4 {
+            color: #4CAF50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .team-card-content p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Careers Section */
+        .careers-section {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .career-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .career-benefits {
+            margin-bottom: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .benefit-item i {
+            color: #81C784;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .career-positions {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .career-positions h4 {
+            color: #81C784;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .career-positions ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .career-positions li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+        }
+
+        .career-positions li:last-child {
+            border-bottom: none;
+        }
+
+        .career-image {
+            text-align: center;
+        }
+
+        .career-image img {
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .career-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Connect Button */
+        .connect-btn {
+            background: linear-gradient(45deg, #FF6B35, #FF8E53);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.5);
+            background: linear-gradient(45deg, #FF8E53, #FF6B35);
+        }
+
+        /* Modal Styles */
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            border: none;
+            border-radius: 20px;
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-tabs {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-tabs .nav-link {
+            color: #ccc;
+            border: none;
+            background: transparent;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+            border-bottom: 2px solid #4CAF50;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(45deg, #4CAF50, #2E7D32);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 30px;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(45deg, #2E7D32, #4CAF50);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .purpose-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Green Connect</h1>
+            <p class="hero-subtitle">Uniting for a Cleaner Future</p>
+            <p class="hero-description">
+                Join us in the fight against environmental degradation. Together, we can create a sustainable world for future generations.
+            </p>
+            <button class="btn connect-btn" data-bs-toggle="modal" data-bs-target="#connectModal">
+                <i class="fas fa-leaf me-2"></i>Connect With Us
+            </button>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Environmental Crisis</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="problem-card scroll-animate">
+                        <div class="problem-icon">
+                            <i class="fas fa-smog"></i>
+                        </div>
+                        <h3 class="problem-title">Air Pollution</h3>
+                        <p class="problem-description">
+                            Rising levels of harmful pollutants in our atmosphere are causing respiratory diseases, climate change, and ecosystem damage. Industrial emissions and vehicle exhaust continue to deteriorate air quality worldwide.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="problem-card scroll-animate">
+                        <div class="problem-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3 class="problem-title">Water Contamination</h3>
+                        <p class="problem-description">
+                            Plastic waste, chemical runoff, and industrial discharge are polluting our rivers, lakes, and oceans. This crisis threatens marine life and contaminates drinking water sources for millions.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="problem-card scroll-animate">
+                        <div class="problem-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <h3 class="problem-title">Deforestation</h3>
+                        <p class="problem-description">
+                            Massive forest clearing for agriculture and urbanization is destroying biodiversity, contributing to climate change, and eliminating crucial carbon sinks that regulate our planet's temperature.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="problem-card scroll-animate">
+                        <div class="problem-icon">
+                            <i class="fas fa-thermometer-three-quarters"></i>
+                        </div>
+                        <h3 class="problem-title">Climate Change</h3>
+                        <p class="problem-description">
+                            Global temperatures are rising due to greenhouse gas emissions, causing extreme weather events, melting ice caps, and sea level rise. This threatens food security and displaces millions of people.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="problem-card scroll-animate">
+                        <div class="problem-icon">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                        <h3 class="problem-title">Waste Crisis</h3>
+                        <p class="problem-description">
+                            Overwhelming amounts of plastic and electronic waste are filling our landfills and oceans. Poor waste management systems are creating toxic environments that harm both wildlife and human health.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="problem-card scroll-animate">
+                        <div class="problem-icon">
+                            <i class="fas fa-fish"></i>
+                        </div>
+                        <h3 class="problem-title">Biodiversity Loss</h3>
+                        <p class="problem-description">
+                            Species extinction rates are accelerating due to habitat destruction, pollution, and climate change. This loss of biodiversity threatens ecosystem stability and reduces nature's resilience.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purpose Section -->
+    <section class="purpose-section">
+        <div class="container">
+            <div class="purpose-content">
+                <h2 class="purpose-title scroll-animate">Our Purpose & Mission</h2>
+                <p class="purpose-description scroll-animate">
+                    Green Connect exists to bridge the gap between environmental awareness and meaningful action. We believe that by connecting passionate individuals, organizations, and communities, we can create a powerful network dedicated to environmental restoration and protection.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="what-we-do-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">What We Do</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="activity-card scroll-animate">
+                        <div class="activity-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h3 class="activity-title">Recycling Programs</h3>
+                        <p class="activity-description">
+                            We organize community recycling drives, educate about proper waste sorting, and partner with local facilities to ensure maximum material recovery and reuse.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="activity-card scroll-animate">
+                        <div class="activity-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="activity-title">Volunteer Programs</h3>
+                        <p class="activity-description">
+                            Join our dedicated volunteers in tree planting, beach cleanups, urban gardening, and environmental education programs that make a real difference in communities.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="activity-card scroll-animate">
+                        <div class="activity-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <h3 class="activity-title">Events & Campaigns</h3>
+                        <p class="activity-description">
+                            We organize impactful environmental campaigns, awareness events, and advocacy initiatives that mobilize communities and influence policy change.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="activity-card scroll-animate">
+                        <div class="activity-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="activity-title">Partner Communities</h3>
+                        <p class="activity-description">
+                            We collaborate with local communities, environmental groups, and NGOs to create sustainable solutions tailored to specific regional needs and challenges.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="activity-card scroll-animate">
+                        <div class="activity-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="activity-title">Student Organizations</h3>
+                        <p class="activity-description">
+                            We support and collaborate with student environmental clubs, providing resources, mentorship, and platforms for young environmental leaders to make their mark.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="activity-card scroll-animate">
+                        <div class="activity-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="activity-title">Welfare Funds</h3>
+                        <p class="activity-description">
+                            Our welfare programs provide support to communities affected by environmental disasters and fund conservation projects in underserved areas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title scroll-animate">Our Team in Action</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="team-card scroll-animate">
+                        <div class="team-image">
+                            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?q=80&w=1074" alt="Team cleaning beach" class="img-fluid">
+                        </div>
+                        <div class="team-card-content">
+                            <h4>Beach Cleanup Initiative</h4>
+                            <p>Our volunteers removing plastic waste from coastal areas, protecting marine ecosystems and raising awareness about ocean pollution.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="team-card scroll-animate">
+                        <div class="team-image">
+                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1013" alt="Tree planting" class="img-fluid">
+                        </div>
+                        <div class="team-card-content">
+                            <h4>Urban Reforestation</h4>
+                            <p>Community members participating in tree planting drives to combat air pollution and create green spaces in urban environments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="team-card scroll-animate">
+                        <div class="team-image">
+                            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1170" alt="Recycling workshop" class="img-fluid">
+                        </div>
+                        <div class="team-card-content">
+                            <h4>Recycling Workshops</h4>
+                            <p>Educational sessions teaching communities about proper waste segregation, recycling techniques, and sustainable living practices.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="team-card scroll-animate">
+                        <div class="team-image">
+                            <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1149" alt="Solar panel installation" class="img-fluid">
+                        </div>
+                        <div class="team-card-content">
+                            <h4>Renewable Energy Projects</h4>
+                            <p>Installing solar panels and promoting renewable energy solutions in rural communities to reduce carbon footprint and energy costs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section class="careers-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="section-title text-start scroll-animate">Join Our Team</h2>
+                    <p class="career-description scroll-animate">
+                        Are you passionate about environmental change? We're looking for dedicated individuals to join our mission. From part-time volunteers to full-time environmental specialists, we have opportunities for everyone.
+                    </p>
+                    <div class="career-benefits scroll-animate">
+                        <div class="benefit-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Flexible working hours</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-laptop"></i>
+                            <span>Remote work options</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-seedling"></i>
+                            <span>Make a real environmental impact</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-users"></i>
+                            <span>Join a passionate community</span>
+                        </div>
+                    </div>
+                    <div class="career-positions scroll-animate">
+                        <h4>Open Positions:</h4>
+                        <ul>
+                            <li><strong>Environmental Coordinator</strong> - Full-time</li>
+                            <li><strong>Community Outreach Specialist</strong> - Part-time</li>
+                            <li><strong>Digital Marketing Volunteer</strong> - Remote</li>
+                            <li><strong>Event Management Assistant</strong> - Contract</li>
+                            <li><strong>Research Intern</strong> - Part-time</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="career-image scroll-animate">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1184" alt="Team working together" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect Modal -->
+    <div class="modal fade" id="connectModal" tabindex="-1" aria-labelledby="connectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="connectModalLabel">
+                        <i class="fas fa-leaf me-2"></i>Join Green Connect
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="authTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="signin-tab" data-bs-toggle="tab" data-bs-target="#signin" type="button" role="tab">
+                                Sign In
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab">
+                                Sign Up
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <div class="tab-content mt-3" id="authTabsContent">
+                        <!-- Sign In Tab -->
+                        <div class="tab-pane fade show active" id="signin" role="tabpanel">
+                            <form id="signinForm">
+                                <div class="mb-3">
+                                    <label for="signinEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="signinEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signinPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="signinPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">
+                                    <i class="fas fa-sign-in-alt me-2"></i>Sign In
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Sign Up Tab -->
+                        <div class="tab-pane fade" id="signup" role="tabpanel">
+                            <form id="signupForm">
+                                <div class="mb-3">
+                                    <label for="signupName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="signupName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupEmail" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="signupEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="signupPassword" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="signupConfirmPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-success w-100">
+                                    <i class="fas fa-user-plus me-2"></i>Sign Up
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form handlers
+        document.getElementById('signinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('signinEmail').value;
+            const password = document.getElementById('signinPassword').value;
+            
+            // Simulate sign in
+            alert(`Welcome back! Signing in with ${email}`);
+            bootstrap.Modal.getInstance(document.getElementById('connectModal')).hide();
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            // Simulate sign up
+            alert(`Welcome to Green Connect, ${name}! Account created successfully.`);
+            bootstrap.Modal.getInstance(document.getElementById('connectModal')).hide();
+        });
+
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) {
+                heroSection.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
