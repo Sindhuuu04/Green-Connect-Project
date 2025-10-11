@@ -1,0 +1,211 @@
+/* ============================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ============================================ */
+
+/* Tablet and Below (768px and below) */
+@media (max-width: 768px) {
+    /* Hero Section */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .purpose-title {
+        font-size: 2rem;
+    }
+    
+    /* Cards Spacing */
+    .problem-card,
+    .activity-card {
+        margin: 0.5rem 0;
+    }
+    
+    /* Career Section */
+    .career-description {
+        font-size: 1rem;
+    }
+    
+    .benefit-item {
+        font-size: 1rem;
+    }
+    
+    .career-image {
+        margin-top: 2rem;
+    }
+    
+    /* Connect Button */
+    .connect-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+}
+
+/* Mobile Devices (576px and below) */
+@media (max-width: 576px) {
+    /* Hero Section */
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+    
+    .purpose-title {
+        font-size: 1.75rem;
+    }
+    
+    /* Purpose Section */
+    .purpose-description {
+        font-size: 1rem;
+    }
+    
+    /* Cards */
+    .problem-card,
+    .activity-card {
+        padding: 1.5rem;
+    }
+    
+    .problem-icon,
+    .activity-icon {
+        font-size: 2.5rem;
+    }
+    
+    .problem-title,
+    .activity-title {
+        font-size: 1.25rem;
+    }
+    
+    /* Team Section */
+    .team-image {
+        height: 150px;
+    }
+    
+    .team-card-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .team-card-content p {
+        font-size: 0.85rem;
+    }
+    
+    /* Career Section */
+    .career-positions {
+        padding: 1rem;
+    }
+    
+    .career-positions h4 {
+        font-size: 1.1rem;
+    }
+    
+    .career-positions li {
+        font-size: 0.9rem;
+    }
+    
+    /* Modal */
+    .modal-dialog {
+        margin: 1rem;
+    }
+    
+    .modal-title {
+        font-size: 1.1rem;
+    }
+}
+
+/* Large Tablets (992px and below) */
+@media (max-width: 992px) {
+    /* Adjust padding for sections */
+    .problem-section,
+    .purpose-section,
+    .what-we-do-section,
+    .team-section,
+    .careers-section {
+        padding: 60px 0;
+    }
+    
+    /* Cards in rows */
+    .problem-card,
+    .activity-card,
+    .team-card {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Extra Large Screens (1400px and above) */
+@media (min-width: 1400px) {
+    /* Container max width */
+    .container {
+        max-width: 1320px;
+    }
+    
+    /* Hero Section */
+    .hero-title {
+        font-size: 4.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.75rem;
+    }
+    
+    /* Section spacing */
+    .problem-section,
+    .purpose-section,
+    .what-we-do-section,
+    .team-section,
+    .careers-section {
+        padding: 100px 0;
+    }
+}
+
+/* Print Styles */
+@media print {
+    /* Hide non-essential elements */
+    .connect-btn,
+    .modal,
+    .particle {
+        display: none;
+    }
+    
+    /* Adjust colors for print */
+    .problem-section,
+    .team-section {
+        background: white;
+        color: black;
+    }
+    
+    .section-title {
+        color: #2E7D32;
+    }
+    
+    /* Page breaks */
+    .problem-section,
+    .purpose-section,
+    .what-we-do-section,
+    .team-section,
+    .careers-section {
+        page-break-inside: avoid;
+    }
+}

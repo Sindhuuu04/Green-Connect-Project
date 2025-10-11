@@ -1,0 +1,156 @@
+/* ============================================
+   ANIMATION KEYFRAMES
+   ============================================ */
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide In Left Animation */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide In Right Animation */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Slide In Up Animation */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Float Animation */
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-20px); 
+    }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% { 
+        transform: scale(1); 
+    }
+    50% { 
+        transform: scale(1.05); 
+    }
+    100% { 
+        transform: scale(1); 
+    }
+}
+
+/* ============================================
+   ANIMATION CLASSES
+   ============================================ */
+
+/* Hero Content Animations */
+.hero-content {
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-title {
+    animation: slideInLeft 1.2s ease-out;
+}
+
+.hero-subtitle {
+    animation: slideInRight 1.2s ease-out;
+}
+
+.hero-description {
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Particle Animations */
+.particle:nth-child(1) {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 4s;
+}
+
+/* Section Title Animations */
+.section-title {
+    animation: slideInUp 1s ease-out;
+}
+
+.purpose-title {
+    animation: slideInUp 1s ease-out;
+}
+
+.purpose-description {
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Connect Button Animation */
+.connect-btn {
+    animation: pulse 2s infinite;
+}
+
+/* Hover Effect Transitions */
+.problem-card,
+.activity-card,
+.team-card,
+.career-image img {
+    transition: all 0.3s ease;
+}
+
+.problem-icon,
+.activity-icon {
+    transition: transform 0.3s ease;
+}
+
+.team-image img {
+    transition: transform 0.3s ease;
+}
