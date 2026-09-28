@@ -1,6 +1,8 @@
 package com.greenconnect.backend.auth;
 
 import com.greenconnect.backend.auth.dto.AuthResponse;
+import com.greenconnect.backend.auth.dto.LoginRequest;
+import com.greenconnect.backend.auth.dto.LoginResponse;
 import com.greenconnect.backend.auth.dto.RegisterRequest;
 import com.greenconnect.backend.model.User;
 import jakarta.validation.Valid;
@@ -35,5 +37,14 @@ public class AuthController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(response);
+    }
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(
+            @Valid @RequestBody LoginRequest request
+    ) {
+
+        return ResponseEntity.ok(
+                authService.login(request)
+        );
     }
 }
