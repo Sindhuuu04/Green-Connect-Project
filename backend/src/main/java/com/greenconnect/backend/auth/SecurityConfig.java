@@ -4,13 +4,23 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    public SecurityConfig(
+            JwtAuthenticationFilter jwtAuthenticationFilter
+    ) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -18,31 +28,44 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http
+    ) throws Exception {
 
         http
                 .csrf(csrf -> csrf.disable())
 
-                .authorizeHttpRequests(auth -> auth
-
-                        // Authentication APIs
-                        .requestMatchers("/api/auth/**").permitAll()
-
-                        // H2 Console
-                        .requestMatchers("/h2-console/**").permitAll()
-
-                        // Existing APIs temporarily remain public
-                        .requestMatchers("/api/**").permitAll()
-
-                        .anyRequest().permitAll()
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(
+                                SessionCreationPolicy.STATELESS
+                        )
                 )
 
-                // Required for H2 console
+                .authorizeHttpRequests(auth -> auth
+
+                        // Authentication does not require JWT
+                        .requestMatchers("/api/auth/**")
+                        .permitAll()
+
+                        // H2 console
+                        .requestMatchers("/h2-console/**")
+                        .permitAll()
+
+                        // Everything else requires authentication
+                        .anyRequest()
+                        .authenticated()
+                )
+
                 .headers(headers ->
                         headers.frameOptions(frame ->
                                 frame.sameOrigin()
                         )
+                )
+
+                // Run our JWT filter before Spring's username/password filter
+                .addFilterBefore(
+                        jwtAuthenticationFilter,
+                        UsernamePasswordAuthenticationFilter.class
                 );
 
         return http.build();
