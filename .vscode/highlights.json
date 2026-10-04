@@ -1,0 +1,13 @@
+{
+  "file:///c%3A/Users/User/Green-Connect-Project/Documents/Notes.md": [
+    {
+      "id": "1",
+      "text": "in authcontroller we did not add login api mapping and that was the reason we were not getting response when tested in postman so then added but when tried again with the wrong password then we got internal server error\r\nso, under dto added:ErrorResponse.java and under auth added: GlobalExceptionHandler.java",
+      "color": "#FF000055",
+      "position": {
+        "start": 3200,
+        "end": 3509
+      }
+    }
+  ]
+}

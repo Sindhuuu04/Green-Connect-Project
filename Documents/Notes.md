@@ -110,3 +110,10 @@ Server problem      → 500
                               │
                               ▼
                            USER
+
+# Backend Funtinality and Concepts
+DAY1: Security and Rolebased Authentication
+Stack: Spring Boot 3.3.4 application using Java 17, Spring Web, Spring Data JPA, H2, and Bean Validation.
+>H2 Database is a small, lightweight relational database written in Java. It is commonly used in Spring Boot applications, especially for development, testing, and learning.
+>The main difference is that H2 is very lightweight and can run inside your application.
+>Instead of installing and configuring MySQL just to test your APIs, you can use H2.Spring Boot can start an H2 database automatically when your application starts.
