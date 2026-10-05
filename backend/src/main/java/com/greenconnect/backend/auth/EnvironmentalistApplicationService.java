@@ -46,4 +46,10 @@ public class EnvironmentalistApplicationService {
 
         return applicationRepository.save(application);
     }
+    public java.util.List<EnvironmentalistApplication> getPendingApplications() {
+
+        return applicationRepository.findByStatus(
+                ApplicationStatus.PENDING
+        );
+    }
 }
