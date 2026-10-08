@@ -1,6 +1,7 @@
 package com.greenconnect.backend.controller;
 
 import com.greenconnect.backend.auth.EnvironmentalistApplicationService;
+import com.greenconnect.backend.auth.dto.EnvironmentalistApplicationResponse;
 import com.greenconnect.backend.model.EnvironmentalistApplication;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +24,13 @@ public class AdminController {
 
     @GetMapping("/environmentalist-applications/pending")
     @PreAuthorize("hasRole('SUPER_ADMIN')")
-    public List<EnvironmentalistApplication> getPendingApplications() {
+    public List<EnvironmentalistApplicationResponse> getPendingApplications() {
 
-        return applicationService.getPendingApplications();
+        List<EnvironmentalistApplication> applications =
+                applicationService.getPendingApplications();
+
+        return applications.stream()
+                .map(EnvironmentalistApplicationResponse::new)
+                .toList();
     }
 }
