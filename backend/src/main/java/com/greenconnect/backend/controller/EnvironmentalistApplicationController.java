@@ -1,8 +1,12 @@
+
 package com.greenconnect.backend.controller;
 
 import com.greenconnect.backend.auth.EnvironmentalistApplicationService;
+import com.greenconnect.backend.auth.dto.EnvironmentalistApplicationResponse;
 import com.greenconnect.backend.model.EnvironmentalistApplication;
+import com.greenconnect.backend.model.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,13 +22,32 @@ public class EnvironmentalistApplicationController {
     }
 
     @PostMapping
-    public ResponseEntity<EnvironmentalistApplication> apply(
-            @RequestParam Long userId,
-            @RequestParam String reason
+    public ResponseEntity<EnvironmentalistApplicationResponse> apply(
+            @RequestBody ApplyRequest request,
+            Authentication authentication
     ) {
-        EnvironmentalistApplication application =
-                applicationService.apply(userId, reason);
+        User user = (User) authentication.getPrincipal();
 
-        return ResponseEntity.ok(application);
+        EnvironmentalistApplication application =
+                applicationService.apply(
+                        user.getId(),
+                        request.getReason()
+                );
+
+        return ResponseEntity.ok(
+                new EnvironmentalistApplicationResponse(application)
+        );
+    }
+
+    public static class ApplyRequest {
+        private String reason;
+
+        public String getReason() {
+            return reason;
+        }
+
+        public void setReason(String reason) {
+            this.reason = reason;
+        }
     }
 }
