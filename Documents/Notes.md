@@ -117,3 +117,184 @@ Stack: Spring Boot 3.3.4 application using Java 17, Spring Web, Spring Data JPA,
 >H2 Database is a small, lightweight relational database written in Java. It is commonly used in Spring Boot applications, especially for development, testing, and learning.
 >The main difference is that H2 is very lightweight and can run inside your application.
 >Instead of installing and configuring MySQL just to test your APIs, you can use H2.Spring Boot can start an H2 database automatically when your application starts.
+>
+>
+# 🌱 Green Connect
+
+Green Connect is a web-based environmental awareness and community engagement platform designed to encourage people to participate in environmental protection activities.
+
+## 📌 Project Overview
+
+Green Connect connects citizens, environmentalists, and administrators through a centralized platform that promotes environmental awareness and community-driven initiatives.
+
+## ✨ Features
+
+- User Registration and Login
+- JWT-Based Authentication
+- Environmental Campaign Management
+- Environmentalist Applications
+- Role-Based Access Control
+- Environmental Issue Reporting
+- Volunteer Opportunities
+- Environmental Awareness and Sustainability
+
+## 🛠️ Tech Stack
+
+### Backend
+- Java
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- Hibernate
+- Spring Security
+- JWT Authentication
+
+### Database
+- H2 Database
+
+### Frontend
+- React.js
+
+### Tools
+- IntelliJ IDEA
+- Maven
+- Postman
+- Git and GitHub
+
+## 📂 Project Structure
+
+```text
+Green-Connect-Project/
+├── backend/
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/
+│   │       └── resources/
+│   │           └── application.properties
+│   └── pom.xml
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+└── README.md
+```
+
+## ⚙️ Prerequisites
+
+Make sure you have the following installed:
+
+- Java JDK
+- Maven
+- Node.js and npm
+- Git
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Sindhuuu04/Green-Connect-Project.git
+cd Green-Connect-Project
+```
+
+### 2. Run the Backend
+
+Navigate to the backend directory containing `pom.xml`:
+
+```bash
+cd backend
+```
+
+Build the project:
+
+```bash
+mvn clean install
+```
+
+Start the Spring Boot application:
+
+```bash
+mvn spring-boot:run
+```
+
+The backend server runs at:
+
+http://localhost:8080
+
+### 3. Access the H2 Database Console
+
+Open the following URL in your browser:
+
+http://localhost:8080/h2-console
+
+Enter the JDBC URL, username, and password configured in `application.properties`.
+
+### 4. Run the Frontend
+
+Open a new terminal and navigate to the frontend directory:
+
+```bash
+cd frontend
+npm install
+```
+
+For a React application using Vite:
+
+```bash
+npm run dev
+```
+
+For a React application using Create React App:
+
+```bash
+npm start
+```
+
+## 🔐 Authentication and Authorization
+
+The backend uses Spring Security and JWT to support authentication and authorization.
+
+Supported user roles include:
+
+- **USER:** Accesses general platform features.
+- **ENVIRONMENTALIST:** Supports environmental initiatives.
+- **SUPER_ADMIN:** Manages administrative operations.
+
+Actual permissions depend on the application's security configuration.
+
+## 🔗 API Testing
+
+Use Postman to test the backend REST APIs.
+
+Example authentication endpoints:
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/auth/register` | User registration |
+| POST | `/api/auth/login` | User login |
+| GET | `/api/campaigns` | Retrieve campaigns |
+
+Confirm the endpoint paths against the actual controller mappings in the project.
+
+## 🔮 Future Enhancements
+
+- Campaign creation and participation
+- Environmentalist application approval
+- Environmental issue tracking
+- Volunteer management
+- Environmental impact dashboards
+- Cloud deployment
+
+## 🎯 Project Goal
+
+To encourage environmental responsibility by connecting people with sustainability initiatives and environmental protection activities.
+
+## 👩‍💻 Author
+
+**Sindhu Harshitha Thoviti**
+
+GitHub: [Sindhuuu04](https://github.com/Sindhuuu04)
+
+---
+
+**Green Connect — Connecting People for a Greener Future 🌍**
