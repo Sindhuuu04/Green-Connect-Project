@@ -1,0 +1,8 @@
+# IDE settings
+.idea/
+.vscode/
+
+# Local H2 database
+data/
+*.mv.db
+*.trace.db
