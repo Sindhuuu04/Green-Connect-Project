@@ -128,6 +128,13 @@ Backend development is in progress. Additional environmental features and fronte
 - Add JWT-based session handling and protected routes
 - Test complete user workflows end to end
 
+october 26
+- View authenticated user's profile
+- Update user profile name
+- Profile response DTO to prevent password hash exposure
+- Input validation for profile updates
+- JWT-protected profile endpoints
+
 
 ## 👩‍💻 Author
 
