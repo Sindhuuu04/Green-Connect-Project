@@ -1,19 +1,23 @@
+
 package com.greenconnect.backend.controller;
 
 import com.greenconnect.backend.model.NewsPost;
 import com.greenconnect.backend.repository.NewsPostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-// Backs the "Environmental News & Stories" page
 @RestController
 @RequestMapping("/api/news")
 public class NewsController {
 
-    @Autowired
-    private NewsPostRepository newsPostRepository;
+    private final NewsPostRepository newsPostRepository;
+
+    public NewsController(NewsPostRepository newsPostRepository) {
+        this.newsPostRepository = newsPostRepository;
+    }
 
     @GetMapping
     public List<NewsPost> getAllNews() {
@@ -22,7 +26,11 @@ public class NewsController {
 
     @GetMapping("/{id}")
     public NewsPost getNewsById(@PathVariable Long id) {
-        return newsPostRepository.findById(id).orElse(null);
+        return newsPostRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "News post not found with id: " + id
+                ));
     }
 
     @PostMapping
