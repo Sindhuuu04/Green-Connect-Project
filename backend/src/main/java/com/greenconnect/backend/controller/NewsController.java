@@ -6,6 +6,7 @@ import com.greenconnect.backend.repository.NewsPostRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class NewsController {
     }
 
     @PostMapping
-    public NewsPost createNews(@RequestBody NewsPost newsPost) {
+    public NewsPost createNews(@Valid @RequestBody NewsPost newsPost) {
         return newsPostRepository.save(newsPost);
     }
 }
