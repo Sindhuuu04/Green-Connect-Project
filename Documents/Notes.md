@@ -134,6 +134,80 @@ october 26
 - Profile response DTO to prevent password hash exposure
 - Input validation for profile updates
 - JWT-protected profile endpoints
+- 
+
+# 🌱 Green Connect – Environmental Sustainability Platform
+
+Green Connect is a Spring Boot-based application designed to encourage environmental sustainability by connecting users with environmentalists. It provides secure authentication, role-based access control, and an approval workflow for environmentalist applications.
+
+## 🚀 Features
+
+### Authentication & Security
+- User Registration and Login
+- JWT-based Authentication and Authorization
+- Password Encryption using BCrypt
+- Spring Security Integration
+- Protected REST API Endpoints
+
+### Role-Based Access Control
+The application supports three roles:
+
+- **USER** – Register, log in, and access user functionalities.
+- **ENVIRONMENTALIST** – Apply for environmentalist privileges.
+- **SUPER_ADMIN** – Review, approve, or reject environmentalist applications.
+
+### Environmentalist Application Management
+- Submit environmentalist applications.
+- Super Admin can review submitted applications.
+- Approve or reject applications.
+- Automatically update user roles upon approval.
+
+### Database Management
+- H2 Database for local development.
+- Persistent local H2 database configuration.
+- H2 Console enabled for development and debugging.
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| Java | Backend Programming |
+| Spring Boot | Backend Framework |
+| Spring Security | Application Security |
+| Spring Data JPA | Database Integration |
+| JWT | Authentication |
+| BCrypt | Password Encryption |
+| H2 Database | Database Management |
+| Maven | Dependency Management |
+| REST APIs | Client-Server Communication |
+| Git & GitHub | Version Control |
+
+## 📂 Project Structure
+
+```text
+Green-Connect-Project/
+│
+├── backend/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/greenconnect/backend/
+│   │   │   │       ├── config/
+│   │   │   │       ├── controller/
+│   │   │   │       ├── dto/
+│   │   │   │       ├── entity/
+│   │   │   │       ├── repository/
+│   │   │   │       ├── security/
+│   │   │   │       ├── service/
+│   │   │   │       └── GreenConnectApplication.java
+│   │   │   └── resources/
+│   │   │       └── application.properties
+│   │   └── test/
+│   └── pom.xml
+│
+├── .gitignore
+└── README.md
+
 
 
 ## 👩‍💻 Author
